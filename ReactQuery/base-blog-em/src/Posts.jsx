@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import React from "react";
-import { PostDetail } from "./PostDetail";
-import { useQuery, useQueryClient } from "react-query";
+import { useEffect, useState } from 'react';
+import React from 'react';
+import { PostDetail } from './PostDetail';
+import { useQuery, useQueryClient } from 'react-query';
 const maxPostPage = 10;
 
 async function fetchPosts(pageNum) {
@@ -14,19 +14,18 @@ async function fetchPosts(pageNum) {
 export function Posts() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedPost, setSelectedPost] = useState(null);
-
   const queryClinent = useQueryClient();
 
   useEffect(() => {
     if (currentPage < maxPostPage) {
       const nextPage = currentPage + 1;
-      queryClinent.prefetchQuery(["posts", nextPage], () => fetchPosts(nextPage));
+      queryClinent.prefetchQuery(['posts', nextPage], () => fetchPosts(nextPage));
     }
   }, [currentPage, queryClinent]);
 
   // replace with useQuery
   const { data, isError, isLoading, error } = useQuery(
-    ["posts", currentPage],
+    ['posts', currentPage],
     () => fetchPosts(currentPage),
     {
       staleTime: 2000,
@@ -47,12 +46,12 @@ export function Posts() {
     <React.Fragment>
       <ul>
         {data.map((post) => (
-          <li key={post.id} className="post-title" onClick={() => setSelectedPost(post)}>
+          <li key={post.id} className='post-title' onClick={() => setSelectedPost(post)}>
             {post.title}
           </li>
         ))}
       </ul>
-      <div className="pages">
+      <div className='pages'>
         <button
           disabled={currentPage <= 1}
           onClick={() => {
