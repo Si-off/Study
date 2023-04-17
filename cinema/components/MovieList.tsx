@@ -6,7 +6,7 @@ import Link from 'next/link';
 const MovieList = ({ movies }: { movies: MovieType[] }) => {
   return (
     <ul>
-      {movies.map((movie) => (
+      {movies?.map((movie) => (
         <li key={movie.id}>
           <Link
             key={movie.id}
@@ -20,4 +20,4 @@ const MovieList = ({ movies }: { movies: MovieType[] }) => {
   );
 };
 
-export default MovieList;
+export default React.memo(MovieList);

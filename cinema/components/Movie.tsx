@@ -21,4 +21,4 @@ const Movie = ({ id, backdrop_path, original_title }: MovieType) => {
   );
 };
 
-export default Movie;
+export default React.memo(Movie);
