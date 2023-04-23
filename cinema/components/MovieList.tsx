@@ -10,7 +10,10 @@ const MovieList = ({ movies }: { movies: MovieType[] }) => {
         <li key={movie.id}>
           <Link
             key={movie.id}
-            href={{ pathname: `/api/movies/${movie.id}`, query: { id: movie.id } }}
+            href={{
+              pathname: `/api/movies/${movie.id}`,
+              query: { id: movie.id, original_title: movie.original_title },
+            }}
             as={`/movies/${movie.id}`}>
             <Movie key={movie.id} {...movie} />
           </Link>

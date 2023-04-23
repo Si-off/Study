@@ -15,7 +15,7 @@ export default function Home() {
   //   });
   // }, []);
   const res = useMovie();
-  console.log(res);
+
   return (
     <Layout>
       <MovieList movies={res} />
